@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="se.sics.sicstus.launching.launchConfigurationType1">
+<stringAttribute key="ATTR_ADDR" value="(${HOST}:${PORT})"/>
+<booleanAttribute key="ATTR_ATTACH_TOPLEVEL" value="true"/>
+<stringAttribute key="ATTR_ATTACH_TOPLEVEL_ID" value="Toplevel 1"/>
+<stringAttribute key="ATTR_EXECUTABLE" value="/usr/local/sicstus4.3.0/bin/sicstus"/>
+<stringAttribute key="ATTR_WORKING_DIRECTORY" value="/Users/MacBook13/GitHub/FEUP/Course/PLOG/f1e1/src"/>
+<booleanAttribute key="REMOTE_ATTACH" value="false"/>
+<booleanAttribute key="org.eclipse.debug.ui.private" value="true"/>
+<stringAttribute key="process_factory_id" value="se.sics.sicstus.id.PrologProcessFactory"/>
+</launchConfiguration>
