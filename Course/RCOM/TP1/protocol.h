@@ -65,7 +65,19 @@ int set_unsignedchar_char(unsignedchar_t * dst, const char * src);
 
 void print_unsignedchar(const unsignedchar_t * uc);
 
+void print_loadingbar(float percent);
+
 void safe_free(void * ptr);
+
+int fsize(const char * filename);
+
+int copy_tofile(FILE * fp, unsignedchar_t * uc);
+
+unsigned char xor_fromto(unsignedchar_t * uc, int xmin, int xmax);
+
+int count_digits(int n);
+
+char * itoa(int value, char* result, int base);
 
 
 #endif /* defined(__RCOM_TP1__protocol__) */

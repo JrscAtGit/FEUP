@@ -18,6 +18,7 @@ typedef struct _app
     int status;
 } applayer_t;
 
+extern applayer_t app;
 
 void set_applayer(applayer_t * app, int f, int s);
 

@@ -8,15 +8,16 @@
 
 #include "link.h"
 
+linklayer_t llink;
 
-void set_linklayer(linklayer_t * link, unsigned int s)
+void set_linklayer(linklayer_t * link, unsigned int seqnum)
 {
-    link->sequenceNumber = s;
+    link->sequenceNumber = seqnum;
 }
 
-void init_linklayer(linklayer_t * link, char * s)
+void init_linklayer(linklayer_t * link, const char * src)
 {
-    copy(link->port, s);
+    strcpy(link->port, src);
     link->baudrate = BAUDRATE;
     link->sequenceNumber = 0;
     link->timeout = TIMEOUT_LIMIT;

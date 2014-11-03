@@ -8,6 +8,7 @@
 
 #include "application.h"
 
+applayer_t app;
 
 void set_applayer(applayer_t * app, int f, int s)
 {

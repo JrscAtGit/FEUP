@@ -4,107 +4,6 @@
 /***********************************************************************************************
 	FUNCOES AUXILIARES AO TRATAMENTO DE DADOS
 ***********************************************************************************************/
-int tamanhoFicheiro(char * str)
-{
-	int r = 0;
-
-	FILE * f;
-	f = fopen(str, "rb");
-	
-	if (f == NULL)
-		return(-1);
-	
-	fseek(f, 0L, SEEK_END);
-	r = ftell(f);
-
-	fclose(f);
-	return(r);
-}
-
-int numDigitos(int a)
-{
-	int s = 0;
-	int v = a;
-	while(v > 0)
-	{
-		v /= 10;
-		s++;
-	}
-	return(s);
-}
-
-char * toString(int num) // contem caracteres latinos, terminando em '\0'
-{
-	int dig = numDigitos(num);
-	char * r;
-	r = (char*) malloc(sizeof(char) * (dig+1) );
-
-	int i;
-	int v = num;
-	
-	for(i = 0; i <= dig; i++)
-	{
-		r[i] = '\0';
-	}
-
-	for (i = (dig-1); i >= 0; i--)
-	{
-		int x = v % 10;
-		v /= 10;
-
-		r[i] = (char)x;
-	}
-
-	return(r);
-}
-
-void colocarFicheiro(FILE * ficheiro, unsigned char * content, int size) // ficheiro aberto em modo "w" ou "w+"
-{
-	int k;
-	for (k = 0; k < size; k++)
-	{
-		fputc(content[k], ficheiro);		
-	}
-}
-
-void verDados(unsigned char * str, int size)
-{
-	int i ;
-	for (i = 0; i <= size; i++)
-	{
-		printf("0x%X ", str[i]);
-		if ( (i + 1) % 25 == 0)
-			printf("\n");
-	} printf("\n\n");
-}
-
-unsigned char xor(unsigned char * dados, int xmin, int xmax) // obtem bcc2 da trama entre xmin e xmax
-{
-	unsigned char r = dados[xmin];
-	int i;	
-	for (i = (xmin+1); i <= xmax; i++)
-	{
-		r = (r ^ dados[i]);
-	}
-	return(r);
-}
-
-void copyPacote(unsigned char * origem, unsigned char * destino, int n)
-{
-	if (destino == NULL) 
-		destino = (unsigned char *) malloc( sizeof(unsigned char) * n);
-	else 
-		destino = (unsigned char *) realloc( destino, sizeof(unsigned char) * n );
-
-	int i;
-	for(i = 0; i<=n; i++)
-	{
-		destino[i] = origem[i];	
-	}
-
-	//verDados(origem, n);
-	//verDados(destino, n);
-}
 
 void limparFrame(unsigned char frame[MTS])
 {
@@ -133,24 +32,7 @@ void limparDados(unsigned char pkg[MFS + 1])
 	}
 }
 
-void mostrarEstadoTransferencia(float percentagem)
-{
-	int numBarras = 10;
-	int numBarrasCheias = (int)(percentagem / (1.0 * numBarras));
-	
-	printf("\t\t\t[");
 
-	int i = 1;
-	for (i = 1; i <= numBarrasCheias; i++)
-		printf("%%");
-
-	for (; i <= numBarras; i++)
-	{
-		printf(" ");
-	} printf("]");
-
-	printf(" %.3f%%\n", percentagem);
-}
 
 /***********************************************************************************************
 	FUNCOES TRATAMENTO DE DADOS
